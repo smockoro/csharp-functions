@@ -19,9 +19,24 @@ namespace SampleAwsLambdaFunction
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public string FunctionHandler(string input, ILambdaContext context)
+        public ResponseJson FunctionHandler(RequestJson input, ILambdaContext context)
         {
-            return input?.ToUpper();
+            var res = new ResponseJson();
+            res.Name = input.Name?.ToUpper();
+            res.Message = input.Message?.ToUpper();
+            return res;
         }
+    }
+
+    public class RequestJson 
+    {
+        public string Name {get; set;}
+        public string Message {get; set;}
+    }
+
+    public class ResponseJson
+    {
+        public string Name {get; set;}
+        public string Message {get; set;}
     }
 }

@@ -20,9 +20,15 @@ namespace SampleAwsLambdaFunction.Tests
             // Invoke the lambda function and confirm the string was upper cased.
             var function = new Function();
             var context = new TestLambdaContext();
-            var upperCase = function.FunctionHandler("hello world", context);
 
-            Assert.Equal("HELLO WORLD", upperCase);
+            var req = new RequestJson();
+            req.Name = "sample";
+            req.Message = "hello world";
+
+            var res = function.FunctionHandler(req, context);
+
+            Assert.Equal("SAMPLE", res.Name);
+            Assert.Equal("HELLO WORLD", res.Message);
         }
     }
 }
