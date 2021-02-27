@@ -17,8 +17,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: SampleAwsLambdaFuncttion Build and Test
-      run: cd SampleAwsLambdaFuncttion
+    - name: SampleAwsLambdaFunction Build and Test
+      run: cd SampleAwsLambdaFunction
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
