@@ -25,4 +25,4 @@ jobs:
       run: cd SampleAwsLambdaFunction/src/SampleAwsLambdaFunction && dotnet build --no-restore
 
     - name: Test
-      run: cd SampleAwsLambdaFunction/test/SampleAwsLambdaFunction.Test && dotnet test --no-build --verbosity normal
+      run: cd SampleAwsLambdaFunction/test/SampleAwsLambdaFunction.Tests && dotnet test --no-build --verbosity normal
