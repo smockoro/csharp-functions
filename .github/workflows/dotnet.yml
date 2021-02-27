@@ -42,5 +42,5 @@ jobs:
       run: cd SampleAzureFunction && dotnet restore
 
     - name: Build
-      run: cd SampleAzureFunction && dotnet build --no-restore
+      run: cd SampleAzureFunction && dotnet build
 
