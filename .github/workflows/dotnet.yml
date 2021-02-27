@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  aws-lambda-build:
 
     runs-on: ubuntu-latest
 
@@ -26,3 +26,21 @@ jobs:
 
     - name: Test
       run: cd SampleAwsLambdaFunction/test/SampleAwsLambdaFunction.Tests && dotnet test --no-build --verbosity normal
+
+  azure-function-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Restore dependencies
+      run: cd SampleAzureFunction && dotnet restore
+
+    - name: Build
+      run: cd SampleAzureFunction && dotnet build --no-restore
+
