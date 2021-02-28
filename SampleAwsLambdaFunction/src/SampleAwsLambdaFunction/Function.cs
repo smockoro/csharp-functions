@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SampleAwsLambdaFunction.Domain.Model;
+using SampleAwsLambdaFunction.Domain.Service;
 
 using Amazon.Lambda.Core;
 
@@ -12,31 +14,22 @@ namespace SampleAwsLambdaFunction
 {
     public class Function
     {
+        private readonly IExampleService exampleService;
         
-        /// <summary>
-        /// A simple function that takes a string and does a ToUpper
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="context"></param>
-        /// <returns></returns>
+        // Default ctor
+        public Function()
+            : this (ServiceBootstrapper.CreateInstance()) {}
+        
+        // Injection ctor
+        public Function(IExampleService exampleService)
+        {
+            this.exampleService = exampleService;
+        }
+        
         public ResponseJson FunctionHandler(RequestJson input, ILambdaContext context)
         {
-            var res = new ResponseJson();
-            res.Name = input.Name?.ToUpper();
-            res.Message = input.Message?.ToUpper();
-            return res;
+            context.Logger.LogLine("get service Logic");
+            return this.exampleService.GetServiceLogic(input);
         }
-    }
-
-    public class RequestJson 
-    {
-        public string Name {get; set;}
-        public string Message {get; set;}
-    }
-
-    public class ResponseJson
-    {
-        public string Name {get; set;}
-        public string Message {get; set;}
     }
 }

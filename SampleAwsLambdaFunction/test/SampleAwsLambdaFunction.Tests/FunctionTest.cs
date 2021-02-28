@@ -8,6 +8,7 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 
 using SampleAwsLambdaFunction;
+using SampleAwsLambdaFunction.Domain.Model;
 
 namespace SampleAwsLambdaFunction.Tests
 {
@@ -29,6 +30,7 @@ namespace SampleAwsLambdaFunction.Tests
 
             Assert.Equal("SAMPLE", res.Name);
             Assert.Equal("HELLO WORLD", res.Message);
+            Assert.Equal("messageToServiceReturn", res.ServiceMessage);
         }
     }
 }
