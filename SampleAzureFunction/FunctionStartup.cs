@@ -1,7 +1,6 @@
-using Microsoft.Azure.Funtions.Extensions.DependencyInjection;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using SampleAzureFunction.Domain.Service;
-using SampleAzureFunction.Domain.Repository;
 using SampleAzureFunction.Repository;
 
 [assembly: FunctionsStartup(typeof(SampleAzureFunction.Startup))]
