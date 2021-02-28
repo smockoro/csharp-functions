@@ -21,7 +21,7 @@ namespace SampleAzureFunction
         }
 
         [FunctionName("HttpExample")]
-        public async Task<IActionResult> Run(
+        public IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
@@ -39,7 +39,6 @@ namespace SampleAzureFunction
                 : $"Hello, {name}. This HTTP triggered function executed successfully.";
             */
             var responseMessage = _todoService.FindTodos();
-
             return new OkObjectResult(responseMessage);
         }
     }
