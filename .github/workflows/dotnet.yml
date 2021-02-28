@@ -50,3 +50,23 @@ jobs:
     - name: Build
       run: cd SampleAzureFunction && dotnet build --no-restore
 
+  gcp-function-build:
+
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        dotnet: [ '5.0.x', '3.1.x' ]
+    name: Dotnet ${{ matrix.dotnet }} 
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet }}
+
+    - name: Restore dependencies
+      run: cd SampleGcpFunction && dotnet restore
+
+    - name: Build
+      run: cd SampleGcpFunction && dotnet build --no-restore
+
