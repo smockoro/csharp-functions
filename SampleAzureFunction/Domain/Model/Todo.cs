@@ -1,0 +1,9 @@
+namespace SampleAzureFunction.Domain.Model
+{
+    public class Todo
+    {
+        public int Id {get; set;}
+        public string Name {get; set;}
+        public bool status {get; set;}
+    }
+}
