@@ -18,7 +18,7 @@ namespace SampleAwsLambdaFunction
         
         // Default ctor
         public Function()
-            : this (ServiceBootstrapper.CreateInstance()) {}
+            : this (ExampleServiceBootstrapper.CreateInstance()) {}
         
         // Injection ctor
         public Function(IExampleService exampleService)

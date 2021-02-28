@@ -15,13 +15,14 @@ namespace SampleAwsLambdaFunction.Tests
     public class FunctionTest
     {
         [Fact]
-        public void TestToUpperFunction()
+        public void TestFunction()
         {
+            Environment.SetEnvironmentVariable("MESSAGE_TO_RETURN","test message");
 
             // Invoke the lambda function and confirm the string was upper cased.
             var function = new Function();
             var context = new TestLambdaContext();
-
+            
             var req = new RequestJson();
             req.Name = "sample";
             req.Message = "hello world";
@@ -30,7 +31,9 @@ namespace SampleAwsLambdaFunction.Tests
 
             Assert.Equal("SAMPLE", res.Name);
             Assert.Equal("HELLO WORLD", res.Message);
-            Assert.Equal("messageToServiceReturn", res.ServiceMessage);
+            Assert.Equal("test message", res.ServiceMessage);
+
+            Environment.SetEnvironmentVariable("MESSAGE_TO_RETURN", "");
         }
     }
 }

@@ -12,5 +12,7 @@
   "function-runtime": "dotnetcore3.1",
   "function-memory-size": 256,
   "function-timeout": 30,
-  "function-handler": "SampleAwsLambdaFunction::SampleAwsLambdaFunction.Function::FunctionHandler"
+  "function-handler": "SampleAwsLambdaFunction::SampleAwsLambdaFunction.Function::FunctionHandler",
+  "function-role": "aws-mentainer_lambda_function",
+  "environment-variables": "MESSAGE_TO_RETURN=service return message;"
 }
